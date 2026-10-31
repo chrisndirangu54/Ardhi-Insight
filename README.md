@@ -30,3 +30,7 @@ The map, historical price ingestion, ownership-record verification, learned land
 - Environment requests without a configured upstream return `not_configured`, not a zero-risk assertion.
 - No actual model has been trained on transaction records.
 - Production security, privacy, tests and hosting are still required.
+
+## Research quality gates
+
+The [state-of-the-art roadmap](docs/SOTA_ROADMAP.md) tracks delivered modules separately from experimental and unimplemented integrations. Transaction validation and monitoring utilities live in `backend/data_quality.py` and `backend/monitoring.py`.
