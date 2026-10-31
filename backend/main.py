@@ -7,7 +7,9 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 
-app = FastAPI(title="Ardhi Insight", version="0.1.0")
+app = FastAPI(title="Ardhi Insight", version="0.2.0")
+from backend.geospatial import router as geospatial_router
+app.include_router(geospatial_router)
 # Demonstration catalog. Do not represent these listings as verified offers.
 LISTINGS = [
     {"id":1,"location":"Ruiru","county":"Kiambu","lat":-1.145,"lon":36.96,"acreage":0.125,"asking_price_kes":2800000,"verified":False},
