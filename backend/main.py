@@ -27,6 +27,8 @@ from backend.parcel_profile import router as parcel_profile_router
 app.include_router(parcel_profile_router)
 from backend.live_amenities import router as live_amenities_router
 app.include_router(live_amenities_router)
+from backend.decision import router as decision_router
+app.include_router(decision_router)
 # Demonstration catalog. Do not represent these listings as verified offers.
 LISTINGS = [
     {"id":1,"location":"Ruiru","county":"Kiambu","lat":-1.145,"lon":36.96,"acreage":0.125,"asking_price_kes":2800000,"verified":False},
