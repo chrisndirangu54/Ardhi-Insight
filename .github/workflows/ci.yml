@@ -11,6 +11,6 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install -r backend/requirements.txt
-      - run: pip install scikit-learn numpy
+      - run: pip install scikit-learn numpy rasterio
       - run: python -m compileall -q backend
       - run: python -m unittest discover -s tests -v
