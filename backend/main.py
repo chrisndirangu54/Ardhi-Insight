@@ -4,7 +4,8 @@ from datetime import datetime
 from typing import Optional
 import httpx
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
+from pathlib import Path
 from pydantic import BaseModel, Field
 
 app = FastAPI(title="Ardhi Insight", version="0.2.0")
@@ -41,6 +42,10 @@ class Simulation(BaseModel):
     years:int=Field(ge=1,le=40)
     additional_costs_kes:float=Field(default=0,ge=0)
     selling_cost_pct:float=Field(default=0,ge=0,le=100)
+
+@app.get("/research",include_in_schema=False)
+def research_page():
+    return FileResponse(Path(__file__).resolve().parent.parent / "frontend" / "research.html")
 
 @app.get("/api/health")
 def health():
