@@ -31,6 +31,8 @@ from backend.decision import router as decision_router
 app.include_router(decision_router)
 from backend.boundaries import router as boundary_router
 app.include_router(boundary_router)
+from backend.survey_matching import router as survey_matching_router
+app.include_router(survey_matching_router)
 # Demonstration catalog. Do not represent these listings as verified offers.
 LISTINGS = [
     {"id":1,"location":"Ruiru","county":"Kiambu","lat":-1.145,"lon":36.96,"acreage":0.125,"asking_price_kes":2800000,"verified":False},
