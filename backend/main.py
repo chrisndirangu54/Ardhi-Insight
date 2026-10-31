@@ -15,6 +15,10 @@ from backend.intelligence import router as intelligence_router
 from backend.reports import router as reports_router
 app.include_router(intelligence_router)
 app.include_router(reports_router)
+from backend.risk import router as risk_router
+from backend.imagery import router as imagery_router
+app.include_router(risk_router)
+app.include_router(imagery_router)
 # Demonstration catalog. Do not represent these listings as verified offers.
 LISTINGS = [
     {"id":1,"location":"Ruiru","county":"Kiambu","lat":-1.145,"lon":36.96,"acreage":0.125,"asking_price_kes":2800000,"verified":False},
