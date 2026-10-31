@@ -29,6 +29,8 @@ from backend.live_amenities import router as live_amenities_router
 app.include_router(live_amenities_router)
 from backend.decision import router as decision_router
 app.include_router(decision_router)
+from backend.boundaries import router as boundary_router
+app.include_router(boundary_router)
 # Demonstration catalog. Do not represent these listings as verified offers.
 LISTINGS = [
     {"id":1,"location":"Ruiru","county":"Kiambu","lat":-1.145,"lon":36.96,"acreage":0.125,"asking_price_kes":2800000,"verified":False},
@@ -56,6 +58,10 @@ class Simulation(BaseModel):
     years:int=Field(ge=1,le=40)
     additional_costs_kes:float=Field(default=0,ge=0)
     selling_cost_pct:float=Field(default=0,ge=0,le=100)
+
+@app.get("/boundary",include_in_schema=False)
+def boundary_page():
+    return FileResponse(Path(__file__).resolve().parent.parent / "frontend" / "boundary.html")
 
 @app.get("/compare",include_in_schema=False)
 def compare_page():
