@@ -19,6 +19,10 @@ from backend.risk import router as risk_router
 from backend.imagery import router as imagery_router
 app.include_router(risk_router)
 app.include_router(imagery_router)
+from backend.remote_sensing import router as remote_sensing_router
+from backend.transactions import router as transactions_router
+app.include_router(remote_sensing_router)
+app.include_router(transactions_router)
 # Demonstration catalog. Do not represent these listings as verified offers.
 LISTINGS = [
     {"id":1,"location":"Ruiru","county":"Kiambu","lat":-1.145,"lon":36.96,"acreage":0.125,"asking_price_kes":2800000,"verified":False},
