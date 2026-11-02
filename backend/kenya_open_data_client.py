@@ -35,10 +35,17 @@ def get_configuration() -> tuple[str, str]:
     audience = os.getenv("KENYA_DATA_GATEWAY_AUDIENCE", "").strip()
     if not endpoint or not audience:
         raise HubUnavailable("Kenya Open Data federation is not configured")
-    parsed = httpx.URL(endpoint)
+    try:
+        parsed = httpx.URL(endpoint)
+    except httpx.InvalidURL as exc:
+        raise HubUnavailable("Invalid federation URL") from exc
+    allowed_host = bool(parsed.host) and (
+        parsed.host.endswith(".cloudfunctions.net")
+        or parsed.host.endswith(".run.app")
+    )
     if (
         parsed.scheme != "https"
-        or not parsed.host
+        or not allowed_host
         or parsed.username
         or parsed.password
         or parsed.query
